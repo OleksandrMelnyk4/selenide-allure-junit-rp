@@ -6,13 +6,12 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Users {
-    ADMINISTRATOR("admin"),
-    DEFAULT("default");
+  ADMINISTRATOR("admin"),
+  DEFAULT("default");
+  private final String name;
 
-    private final String name;
-
-    @Override
-    public String toString() {
-        return name;
-    }
+  @Override
+  public String toString() {
+    return name;
+  }
 }

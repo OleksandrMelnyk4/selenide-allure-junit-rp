@@ -6,24 +6,18 @@ import com.typesafe.config.ConfigFactory;
 public interface ConfigProvider {
 
 
-    Config config = readConfig();
+  Config config = readConfig();
+  String URL = readConfig().getString("url");
 
-    static Config readConfig(){
-        return
-//                ConfigFactory.systemProperties().hasPath("testProfile")
-//               ? ConfigFactory.load(ConfigFactory.systemProperties().getString("testProfile"))
-//               :
-                ConfigFactory.load("application.conf");
-    }
+  static Config readConfig() {
+    return ConfigFactory.load("application.conf");
+  }
 
-    String URL = readConfig().getString("url");
+  static String getLogin(String userRole) {
+    return readConfig().getString(String.format("usersParams.%s.login", userRole));
+  }
 
-
-    static String getLogin(String userRole){
-        return readConfig().getString(String.format("usersParams.%s.login", userRole));
-    }
-
-    static String getPassword(String userRole){
-        return readConfig().getString(String.format("usersParams.%s.password", userRole));
-    }
+  static String getPassword(String userRole) {
+    return readConfig().getString(String.format("usersParams.%s.password", userRole));
+  }
 }
