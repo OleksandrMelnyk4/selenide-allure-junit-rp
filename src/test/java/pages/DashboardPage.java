@@ -8,7 +8,7 @@ import static utils.timeouts.Timeout.TEN_SEC;
 public class DashboardPage {
   private static final String HOME_PAGE_TITLE_XPATH = "//span[@title = 'All Dashboards']";
 
-  public void dashboardsPageShouldBeOpened() {
+  public void dashboardPageShouldBeOpened() {
     $x(HOME_PAGE_TITLE_XPATH).shouldBe(visible, ofMillis(TEN_SEC.getValue()));
   }
 }

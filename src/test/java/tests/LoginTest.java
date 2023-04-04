@@ -15,8 +15,7 @@ public class LoginTest extends BaseTest {
   @Test
   @Description("Admin user is able to login to Report portal")
   void openLoginPageAsAdmin() {
-    login.openLoginPage();
     login.loginWithUser(ADMINISTRATOR);
-    dashboardPage.dashboardsPageShouldBeOpened();
+    dashboardPage.dashboardPageShouldBeOpened();
   }
 }

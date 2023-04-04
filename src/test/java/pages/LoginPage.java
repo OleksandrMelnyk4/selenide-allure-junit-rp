@@ -16,22 +16,19 @@ public class LoginPage {
   private static final String PASSWORD_FIELD_XPATH = "//input[@name='password']";
   private static final String LOGIN_BUTTON_XPATH = "//button[@type='submit']";
 
-  public LoginPage() {
-  }
 
-  public void openLoginPage() {
+  private void openLoginPage() {
     Selenide.open(ConfigProvider.URL);
   }
 
   public void loginWithUser(Users userRole) {
+    openLoginPage();
+
     LoginUserDto user = getUser(userRole.getName());
 
-    $x(LOGIN_FIELD_XPATH).shouldBe(visible, enabled)
-      .setValue(user.getUserName());
-    $x(PASSWORD_FIELD_XPATH).shouldBe(visible, enabled)
-      .setValue(user.getUserPassword());
-    $x(LOGIN_BUTTON_XPATH).shouldBe(visible, enabled)
-      .click();
+    $x(LOGIN_FIELD_XPATH).shouldBe(visible, enabled).setValue(user.getUserName());
+    $x(PASSWORD_FIELD_XPATH).shouldBe(visible, enabled).setValue(user.getUserPassword());
+    $x(LOGIN_BUTTON_XPATH).shouldBe(visible, enabled).click();
   }
 
   private LoginUserDto getUser(String userRole) {
