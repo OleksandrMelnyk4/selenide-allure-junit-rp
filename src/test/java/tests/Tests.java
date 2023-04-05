@@ -7,7 +7,7 @@ import buisness.components.NavigationMenuComponent;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Test;
 
-import static core.enums.Users.ADMINISTRATOR;
+import static core.enums.UsersRole.ADMINISTRATOR;
 import static core.utils.constants.MenuNames.FILTERS;
 
 class Tests extends BaseTest {

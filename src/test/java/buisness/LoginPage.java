@@ -1,16 +1,15 @@
 package buisness;
 
 import com.codeborne.selenide.Selenide;
-import core.ConfigProvider;
 import core.dto.LoginUserDto;
-import core.enums.Users;
+import core.enums.UsersRole;
 import lombok.extern.slf4j.Slf4j;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
-import static core.ConfigProvider.getLogin;
-import static core.ConfigProvider.getPassword;
+import static core.utils.services.ConfigurationService.getProperty;
+
 
 @Slf4j
 public class LoginPage extends BasePage {
@@ -18,12 +17,11 @@ public class LoginPage extends BasePage {
   private static final String PASSWORD_FIELD_XPATH = "//input[@name='password']";
   private static final String LOGIN_BUTTON_XPATH = "//button[@type='submit']";
 
-
   private void openLoginPage() {
-    Selenide.open(ConfigProvider.URL);
+    Selenide.open(getProperty("base.uri"));
   }
 
-  public void loginWithUser(Users userRole) {
+  public void loginWithUser(UsersRole userRole) {
     openLoginPage();
     isPageLoaded();
     LoginUserDto user = getUser(userRole.getName());
@@ -36,6 +34,6 @@ public class LoginPage extends BasePage {
   }
 
   private LoginUserDto getUser(String userRole) {
-    return new LoginUserDto(getLogin(userRole), getPassword(userRole));
+    return new LoginUserDto(getProperty("usersParams.%s.login".formatted(userRole)), getProperty("usersParams.%s.password".formatted(userRole)));
   }
 }
