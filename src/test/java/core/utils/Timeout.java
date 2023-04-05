@@ -1,4 +1,4 @@
-package utils.timeouts;
+package core.utils;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package utils.config;
+package core;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
