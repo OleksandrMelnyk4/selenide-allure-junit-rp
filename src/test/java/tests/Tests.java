@@ -28,6 +28,7 @@ class Tests extends BaseTest {
     dashboardPage.dashboardPageShouldBeOpened();
     navigationMenuComponent.navigateToMenu(FILTERS);
     filtersPage.filtersPageShouldBeOpened();
+
     String session = Selenide.sessionId().toString();
     assertFalse(session.isEmpty());
     log.info("Test passed and session is %s".formatted(session));
