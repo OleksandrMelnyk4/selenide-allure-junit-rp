@@ -14,7 +14,7 @@ import static core.utils.constants.MenuNames.FILTERS;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @Slf4j
-class Tests extends BaseTest {
+class LoginTest extends BaseTest {
 
   LoginPage login = new LoginPage();
   DashboardPage dashboardPage = new DashboardPage();
