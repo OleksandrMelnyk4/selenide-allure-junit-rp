@@ -2,6 +2,7 @@ package core.utils.services;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+import core.dto.LoginUserDto;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.configuration.Configuration;
@@ -40,28 +41,6 @@ public class ConfigurationService {
     return System.getProperty(propertyName, instance.get().properties.getProperty(propertyName));
   }
 
-
-//  @SneakyThrows
-//  public static void getData(){
-//
-//
-//
-//    ClassLoader classLoader = getClass().getClassLoader();
-//    File file = new File(classLoader.getResource("fileName").getFile());
-//    InputStream inputStream = new FileInputStream(file);
-//    InputStream data = getClass().getClassLoader()
-//      .getResourceAsStream("ddt/launchers_coulmns_name.csv");
-//
-//    // java.io.InputStream
-//    InputStream inputStream = getClass().getClassLoader()
-//      .getResourceAsStream("ddt/launchers_coulmns_name.csv");
-//    InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-//    BufferedReader reader = new BufferedReader(streamReader);
-//    for (String line; (line = reader.readLine()) != null;) {
-//      // Process line
-//    }
-//  }
-
   private void loadProperties(final String resource) throws IOException {
     log.info(String.format("Reading environment properties: %s.properties", resource));
     InputStream inputStream = getClass().getClassLoader()
@@ -78,5 +57,9 @@ public class ConfigurationService {
       }
     }
     properties.putAll(props);
+  }
+
+  public static LoginUserDto getUser(String userRole) {
+    return new LoginUserDto(getProperty("usersParams.%s.login".formatted(userRole)), getProperty("usersParams.%s.password".formatted(userRole)));
   }
 }

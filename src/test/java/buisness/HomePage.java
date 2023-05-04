@@ -1,15 +1,14 @@
-package tests;
+package buisness;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 
-@Execution(ExecutionMode.CONCURRENT)
-abstract public class BaseTest {
+import static core.utils.services.ConfigurationService.getProperty;
+
+public class HomePage {
 
   @BeforeEach
   public void init() {
@@ -30,5 +29,10 @@ abstract public class BaseTest {
   public void tearDown() {
     Selenide.clearBrowserCookies();
     Selenide.closeWebDriver();
+  }
+
+  public void openHomePage() {
+    Selenide.open(getProperty("base.uri"));
+    Selenide.webdriver().driver().getWebDriver().manage().window().maximize();
   }
 }
