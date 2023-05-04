@@ -8,10 +8,6 @@ import lombok.Getter;
 public enum UsersRole {
   ADMINISTRATOR("admin"),
   DEFAULT("default");
-  private final String name;
 
-  @Override
-  public String toString() {
-    return name;
-  }
+  private final String name;
 }

@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
+import static core.enums.PropertyNames.BASE_URL;
 import static core.utils.services.ConfigurationService.getProperty;
 
 
@@ -18,7 +19,7 @@ public class LoginPage extends BasePage {
   private static final String LOGIN_BUTTON_XPATH = "//button[@type='submit']";
 
   private void openLoginPage() {
-    Selenide.open(getProperty("base.uri"));
+    Selenide.open(getProperty(BASE_URL.getName()));
   }
 
   public void loginWithUser(UsersRole userRole) {

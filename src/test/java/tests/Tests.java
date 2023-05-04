@@ -12,10 +12,10 @@ import static core.utils.constants.MenuNames.FILTERS;
 
 class Tests extends BaseTest {
 
-  LoginPage login = new LoginPage();
-  DashboardPage dashboardPage = new DashboardPage();
-  FiltersPage filtersPage = new FiltersPage();
-  NavigationMenuComponent navigationMenuComponent = new NavigationMenuComponent();
+  private final LoginPage login = new LoginPage();
+  private final DashboardPage dashboardPage = new DashboardPage();
+  private final FiltersPage filtersPage = new FiltersPage();
+  private final NavigationMenuComponent navigationMenuComponent = new NavigationMenuComponent();
 
   @Test
   @Description("Admin user is able to login and open Filters page")
