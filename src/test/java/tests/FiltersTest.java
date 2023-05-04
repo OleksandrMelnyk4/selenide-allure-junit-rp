@@ -52,7 +52,7 @@ public class FiltersTest extends BaseTest {
   @ParameterizedTest(name = "Verify filters grid contains {0} column")
   @MethodSource("filterColumnsDataProvider")
   @Description("Verify filters grid contains proper columns")
-  public void verifyFilterGridContainsProperColumns(final String column) {
+  void verifyFilterGridContainsProperColumns(final String column) {
     login.loginWithUser(ADMINISTRATOR);
     navigationMenuComponent.navigateToMenu(FILTERS);
     filtersPage.gridShouldContainsFilters();
