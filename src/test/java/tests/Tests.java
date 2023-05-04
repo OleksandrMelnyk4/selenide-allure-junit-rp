@@ -25,5 +25,4 @@ class Tests extends BaseTest {
     navigationMenuComponent.navigateToMenu(FILTERS);
     filtersPage.filtersPageShouldBeOpened();
   }
-
 }
