@@ -45,6 +45,11 @@ public class FiltersPage extends BasePage {
       .shouldBe(visible).click();
   }
 
+  public void filterByNameShouldBeVisible(final String filterName) {
+    $x(FILTER_ITEM_LINE + FILTER_NAME_TEMPLATE.formatted(filterName))
+      .shouldBe(visible);
+  }
+
   public void mainGridContainsColumns(final String columnName) {
     $x(GRID_COLUMN_NAME_TEMPLATE.formatted(columnName)).shouldBe(visible);
     log.info("Column name is present %s".formatted(columnName));

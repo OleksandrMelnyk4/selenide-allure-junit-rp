@@ -1,4 +1,4 @@
-package tests;
+package buisness;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -6,7 +6,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-abstract public class BaseTest {
+import static core.utils.services.ConfigurationService.getProperty;
+
+public class HomePage {
 
   @BeforeEach
   public void init() {
@@ -21,6 +23,11 @@ abstract public class BaseTest {
     Configuration.browserSize = "1920x1080";
     Configuration.headless = false;
     Configuration.webdriverLogsEnabled = true;
+  }
+
+  public void openHomePage() {
+    Selenide.open(getProperty("base.uri"));
+    Selenide.webdriver().driver().getWebDriver().manage().window().maximize();
   }
 
   @AfterEach
