@@ -9,16 +9,12 @@
   <version>1.0</version>
 
   <properties>
-    <allure.version>2.21.0</allure.version>
-    <aspectj.version>1.9.9.1</aspectj.version>
-    <junit-jupiter-version>5.9.2</junit-jupiter-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <commons-configuration.version>1.9</commons-configuration.version>
     <cucumber.version>6.11.0</cucumber.version>
   </properties>
 
   <dependencies>
-
     <dependency>
       <groupId>commons-configuration</groupId>
       <artifactId>commons-configuration</artifactId>
