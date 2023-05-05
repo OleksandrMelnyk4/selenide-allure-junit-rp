@@ -19,6 +19,7 @@ public class FiltersPage extends BasePage {
   private static final String FILTER_NAME_TEMPLATE = "//span[text()='%s']";
   private static final String FILTER_NAME = "//span[contains(@class, 'filterName__name-wrapper')]";
   private static final String GRID_COLUMN_NAME_TEMPLATE = "//span[contains(@class, 'headerCell__title-full') and text()='%s']";
+  private static final String ADD_FILTER_BUTTON = ".//span[text()= 'Add Filter']";
 
 
   private SelenideElement getFilterComponent() {
@@ -57,5 +58,9 @@ public class FiltersPage extends BasePage {
 
   public void openAnyFilter() {
     $x(FILTER_NAME).shouldBe(visible).click();
+  }
+
+  public void clickAddNewFilterButton() {
+    $x(ADD_FILTER_BUTTON).shouldBe(visible).click();
   }
 }

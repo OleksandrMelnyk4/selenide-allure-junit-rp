@@ -9,7 +9,7 @@ public class NavigationMenuStepDefs {
 
 
   @When("User navigates to {} menu")
-  public void userNavigatesToMenu (final MenuNames menu){
+  public void userNavigatesToMenu(final MenuNames menu) {
     navigationMenuComponent.navigateToMenu(menu.toString());
   }
 }

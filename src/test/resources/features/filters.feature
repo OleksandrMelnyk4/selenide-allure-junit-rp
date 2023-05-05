@@ -1,21 +1,13 @@
 Feature: Filters feature
 
-
-  @smoke
-  Scenario Outline: User is able to login
-    Given <user> login to the Report Portal
-    Then Dashboard page is opened
-
-    Examples:
-      | user          |
-      | ADMINISTRATOR |
-      | DEFAULT       |
-
-
-  @smoke
-  Scenario: Verify Filters page contains some filters
+  Background:
     Given ADMINISTRATOR login to the Report Portal
     When User navigates to FILTERS menu
+    Then User creates a new filter
+
+  @smoke @filter_is_great
+  Scenario: Verify Filters page contains some filters
+    Given User navigates to FILTERS menu
     Then Filters grid contains such filters
       | Android_API |
       | DEMO_FILTER |

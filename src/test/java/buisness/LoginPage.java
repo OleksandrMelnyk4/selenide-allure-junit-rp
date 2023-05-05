@@ -2,7 +2,6 @@ package buisness;
 
 import com.codeborne.selenide.Selenide;
 import core.dto.LoginUserDto;
-import core.enums.UsersRole;
 import lombok.extern.slf4j.Slf4j;
 
 import static com.codeborne.selenide.Condition.enabled;
@@ -14,10 +13,10 @@ import static core.utils.services.ConfigurationService.getUser;
 
 @Slf4j
 public class LoginPage extends BasePage {
-  private HomePage homePage = new HomePage();
   private static final String LOGIN_FIELD_XPATH = "//input[@name='login']";
   private static final String PASSWORD_FIELD_XPATH = "//input[@name='password']";
   private static final String LOGIN_BUTTON_XPATH = "//button[@type='submit']";
+  private HomePage homePage = new HomePage();
 
   private void openLoginPage() {
     Selenide.open(getProperty("base.uri"));

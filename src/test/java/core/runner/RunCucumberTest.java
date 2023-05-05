@@ -1,25 +1,20 @@
 package core.runner;
 
+import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
-import org.junit.platform.suite.api.ConfigurationParameter;
-import org.junit.platform.suite.api.IncludeEngines;
-import org.junit.platform.suite.api.SelectClasspathResource;
-import org.junit.platform.suite.api.Suite;
+import org.junit.runner.RunWith;
 
-import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
-
-@Suite
-@IncludeEngines("cucumber")
-@SelectClasspathResource("core/runner")
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "core.runner")
+@RunWith(Cucumber.class)
 @CucumberOptions(
   plugin = {
     "pretty",
-    "io.qameta.allure.cucumber7jvm.allureCucumber7jvm",
+//    "io.qameta.allure.cucumber6jvm.allureCucumber6jvm",
     "html:target/cucumber-reports/Cucumber-Html.html",
-    "json:target/cucumber-reports/Cucumber.json",
-    "junit:target/cucumber-reports/Cucumber.xml"},
+    "json:target/cucumber-reports/Cucumber.json"
+  },
   features = {"src/test/resources/features/"},
-  glue = {"stepdefs"})
+  glue = {"stepdefs"},
+  tags = "@smoke",
+  stepNotifications = true)
 public class RunCucumberTest {
 }
