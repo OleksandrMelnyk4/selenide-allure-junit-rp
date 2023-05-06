@@ -7,6 +7,9 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.OutputType;
+
+import java.util.Base64;
 
 @Slf4j
 public class CucumberHook {
@@ -29,6 +32,15 @@ public class CucumberHook {
     Selenide.clearBrowserCookies();
     Selenide.closeWindow();
     Selenide.closeWebDriver();
+  }
+
+  @After
+  public void takeScreenshot(Scenario scenario) {
+    if (scenario.isFailed()) {
+      String screenshotAsBase64 = Selenide.screenshot(OutputType.BASE64);
+      byte[] decoded = Base64.getDecoder().decode(screenshotAsBase64);
+      scenario.attach(decoded, "image/png", "screenshot");
+    }
   }
 
   @After("@filter_is_great")
