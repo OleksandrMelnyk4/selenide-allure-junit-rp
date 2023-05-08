@@ -50,7 +50,7 @@ public class FiltersPage extends BasePage {
     log.info("Column name is present %s".formatted(columnName));
   }
 
-  public void openAnyFilter() {
+  public void openFirstFilter() {
     $x(FILTER_NAME).shouldBe(visible).click();
   }
 }

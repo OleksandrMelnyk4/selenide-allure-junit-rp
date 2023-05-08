@@ -1,9 +1,9 @@
 package tests;
 
-import buisness.FiltersPage;
 import buisness.LauncherPage;
-import buisness.LoginPage;
 import buisness.components.NavigationMenuComponent;
+import buisness.core.FiltersPage;
+import buisness.service.LoginService;
 import io.qameta.allure.Description;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -19,8 +19,8 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @Slf4j
 public class FiltersTest extends BaseTest {
-  LoginPage login = new LoginPage();
-  FiltersPage filtersPage = new FiltersPage();
+  private final LoginService loginService = new LoginService();
+  private final FiltersPage filtersPage = new FiltersPage();
   NavigationMenuComponent navigationMenuComponent = new NavigationMenuComponent();
   LauncherPage launcherPage = new LauncherPage();
 
@@ -44,7 +44,7 @@ public class FiltersTest extends BaseTest {
   @Test
   @Description("Verify filter grid contains items")
   void filtersPageShouldHaveItems() {
-    login.loginWithUser(ADMINISTRATOR);
+    loginService.loginWithUser(ADMINISTRATOR);
     navigationMenuComponent.navigateToMenu(FILTERS);
     filtersPage.gridShouldContainsFilters();
   }
@@ -53,7 +53,7 @@ public class FiltersTest extends BaseTest {
   @MethodSource("filterColumnsDataProvider")
   @Description("Verify filters grid contains proper columns")
   void verifyFilterGridContainsProperColumns(final String column) {
-    login.loginWithUser(ADMINISTRATOR);
+    loginService.loginWithUser(ADMINISTRATOR);
     navigationMenuComponent.navigateToMenu(FILTERS);
     filtersPage.gridShouldContainsFilters();
     filtersPage.mainGridContainsColumns(column);
@@ -63,7 +63,7 @@ public class FiltersTest extends BaseTest {
   @MethodSource("filterSearchDataProvider")
   @Description("Verify search by Filter name")
   void searchFiltersByNameWorksCorrectly(final String filterName) {
-    login.loginWithUser(ADMINISTRATOR);
+    loginService.loginWithUser(ADMINISTRATOR);
     navigationMenuComponent.navigateToMenu(FILTERS);
     filtersPage.gridShouldContainsFilters();
     filtersPage.applySearchFilterByName(filterName);
