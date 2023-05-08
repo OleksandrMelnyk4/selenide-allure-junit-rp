@@ -1,7 +1,6 @@
 package core.utils.services;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.configuration.Configuration;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,9 +10,7 @@ import java.util.Properties;
 @Slf4j
 public class ConfigurationService {
 
-  private static final Object SYN_OBJ = new Object();
   private static final ThreadLocal<ConfigurationService> instance = new ThreadLocal<>();
-  private static final ThreadLocal<Configuration> configuration = new ThreadLocal<>();
   private final Properties properties = new Properties();
 
   private ConfigurationService() {
