@@ -1,6 +1,5 @@
 package core.utils.services;
 
-import core.dto.LoginUserDto;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -45,9 +44,5 @@ public class ConfigurationService {
       }
     }
     properties.putAll(props);
-  }
-
-  public static LoginUserDto getUser(String userRole) {
-    return new LoginUserDto(getProperty("usersParams.%s.login".formatted(userRole)), getProperty("usersParams.%s.password".formatted(userRole)));
   }
 }
