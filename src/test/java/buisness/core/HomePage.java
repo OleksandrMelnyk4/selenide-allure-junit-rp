@@ -1,4 +1,4 @@
-package buisness;
+package buisness.core;
 
 import com.codeborne.selenide.Selenide;
 

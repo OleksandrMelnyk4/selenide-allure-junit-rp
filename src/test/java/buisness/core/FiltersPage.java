@@ -46,14 +46,12 @@ public class FiltersPage extends BasePage {
       .shouldBe(visible).click();
   }
 
-  public void filterByNameShouldBeVisible(final String filterName) {
-    $x(FILTER_ITEM_LINE + FILTER_NAME_TEMPLATE.formatted(filterName))
-      .shouldBe(visible);
+  public boolean filterByNameShouldBeVisible(final String filterName) {
+    return $x(FILTER_ITEM_LINE + FILTER_NAME_TEMPLATE.formatted(filterName)).has(visible);
   }
 
-  public void mainGridContainsColumns(final String columnName) {
-    $x(GRID_COLUMN_NAME_TEMPLATE.formatted(columnName)).shouldBe(visible);
-    log.info("Column name is present %s".formatted(columnName));
+  public boolean mainGridContainsColumns(final String columnName) {
+    return $x(GRID_COLUMN_NAME_TEMPLATE.formatted(columnName)).has(visible);
   }
 
   public void openFirstFilter() {

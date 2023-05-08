@@ -1,16 +1,16 @@
 package stepdefs;
 
-import buisness.LoginPage;
+import buisness.service.LoginService;
 import core.enums.UsersRole;
 import io.cucumber.java.en.Given;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class LoginPageStepDefs {
-  LoginPage login = new LoginPage();
+  private final LoginService loginService = new LoginService();
 
   @Given("{} login to the Report Portal")
   public void userLoginToReportPortal(final UsersRole userRole) {
-    login.loginWithUser(userRole.toString());
+    loginService.loginWithUser(userRole);
   }
 }

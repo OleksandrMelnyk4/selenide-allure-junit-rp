@@ -1,8 +1,8 @@
 package stepdefs;
 
-import buisness.FiltersPage;
-import buisness.LauncherPage;
 import buisness.components.AddFilterComponent;
+import buisness.core.FiltersPage;
+import buisness.core.LauncherPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import lombok.extern.slf4j.Slf4j;
@@ -10,18 +10,22 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
+
 @Slf4j
 public class FiltersPageStepDefs {
-  FiltersPage filtersPage = new FiltersPage();
-  LauncherPage launcherPage = new LauncherPage();
-  AddFilterComponent addFilterComponent = new AddFilterComponent();
+  private final FiltersPage filtersPage = new FiltersPage();
+  private final LauncherPage launcherPage = new LauncherPage();
+  private final AddFilterComponent addFilterComponent = new AddFilterComponent();
 
   @Then("Filters grid contains such filters")
   public void filterGridContainsSuchFilters(final DataTable dataTable) {
     filtersPage.filtersPageShouldBeOpened();
     filtersPage.gridShouldContainsFilters();
     List<String> filterNames = dataTable.asList();
-    filterNames.forEach(e -> filtersPage.filterByNameShouldBeVisible(e));
+    filterNames.forEach(e ->
+      assertTrue(filtersPage.filterByNameShouldBeVisible(e))
+    );
   }
 
   @Then("Filters grid contains such columns")
@@ -29,7 +33,9 @@ public class FiltersPageStepDefs {
     filtersPage.filtersPageShouldBeOpened();
     filtersPage.gridShouldContainsFilters();
     List<String> filterNames = dataTable.asList();
-    filterNames.forEach(e -> filtersPage.mainGridContainsColumns(e));
+    filterNames.forEach(e ->
+      assertTrue(filtersPage.mainGridContainsColumns(e))
+    );
   }
 
   @Then("User creates a new filter")

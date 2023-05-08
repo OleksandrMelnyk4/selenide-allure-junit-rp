@@ -12,9 +12,4 @@ public enum MenuNames {
   PROJECT_SETTINGS("settings");
 
   private final String name;
-
-  @Override
-  public String toString() {
-    return name;
-  }
 }
