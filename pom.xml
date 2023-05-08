@@ -12,7 +12,7 @@
     <allure.version>2.21.0</allure.version>
     <aspectj.version>1.9.9.1</aspectj.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <commons-configuration.version>1.9</commons-configuration.version>
+    <commons-configuration.version>1.10</commons-configuration.version>
   </properties>
 
   <dependencies>
