@@ -4,13 +4,17 @@ import buisness.components.NavigationMenuComponent;
 import buisness.core.DashboardPage;
 import buisness.core.FiltersPage;
 import buisness.service.LoginService;
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Description;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import static core.enums.UsersRole.ADMINISTRATOR;
 import static core.utils.constants.MenuNames.FILTERS;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class Tests extends BaseTest {
+@Slf4j
+class LoginTest extends BaseTest {
 
   private final LoginService loginService = new LoginService();
   private final DashboardPage dashboardPage = new DashboardPage();
@@ -25,5 +29,9 @@ class Tests extends BaseTest {
     dashboardPage.dashboardPageShouldBeOpened();
     navigationMenuComponent.navigateToMenu(FILTERS);
     filtersPage.filtersPageShouldBeOpened();
+
+    String session = Selenide.sessionId().toString();
+    assertFalse(session.isEmpty());
+    log.info("Test passed and session is %s".formatted(session));
   }
 }
