@@ -7,3 +7,4 @@ build
 .allure
 .github
 allure-results
+allure-report

@@ -3,7 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 
 import static core.enums.PropertyNames.BROWSER;
 import static core.enums.PropertyNames.BROWSER_SIZE;
@@ -15,12 +15,12 @@ import static java.lang.Boolean.parseBoolean;
 
 abstract public class BaseTest {
 
-  @BeforeEach
-  public void init() {
+  @BeforeAll
+  public static void init() {
     setUp();
   }
 
-  public void setUp() {
+  public static void setUp() {
     Configuration.browser = getProperty(BROWSER.getName());
     Configuration.driverManagerEnabled = parseBoolean(getProperty(DRIVER_MANAGER_ENABLED.getName()));
     Configuration.browserSize = getProperty(BROWSER_SIZE.getName());
