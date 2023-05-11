@@ -24,7 +24,7 @@ public class FiltersPageStepDefs {
     filtersPage.gridShouldContainsFilters();
     List<String> filterNames = dataTable.asList();
     filterNames.forEach(e ->
-      assertTrue(filtersPage.filterByNameShouldBeVisible(e))
+      assertTrue("The filter with name %s hasn't been found".formatted(e), filtersPage.filterByNameShouldBeVisible(e))
     );
   }
 
@@ -34,7 +34,7 @@ public class FiltersPageStepDefs {
     filtersPage.gridShouldContainsFilters();
     List<String> filterNames = dataTable.asList();
     filterNames.forEach(e ->
-      assertTrue(filtersPage.mainGridContainsColumns(e))
+      assertTrue("The column %s hasn't been found".formatted(e), filtersPage.mainGridContainsColumns(e))
     );
   }
 

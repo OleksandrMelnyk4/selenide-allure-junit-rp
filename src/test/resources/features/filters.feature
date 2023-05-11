@@ -1,4 +1,7 @@
 Feature: Filters feature
+  As an administrator
+  I want to open Filters
+  So that I can grid with filters
 
   Background:
     Given ADMINISTRATOR login to the Report Portal
