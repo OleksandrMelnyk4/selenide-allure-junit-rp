@@ -19,6 +19,7 @@ public class FiltersPage extends BasePage {
   private static final String FILTER_NAME_TEMPLATE = "//span[text()='%s']";
   private static final String FILTER_NAME = "//span[contains(@class, 'filterName__name-wrapper')]";
   private static final String GRID_COLUMN_NAME_TEMPLATE = "//span[contains(@class, 'headerCell__title-full') and text()='%s']";
+  private static final String ADD_FILTER_BUTTON = ".//span[text()= 'Add Filter']";
 
 
   private SelenideElement getFilterComponent() {
@@ -45,12 +46,19 @@ public class FiltersPage extends BasePage {
       .shouldBe(visible).click();
   }
 
-  public void mainGridContainsColumns(final String columnName) {
-    $x(GRID_COLUMN_NAME_TEMPLATE.formatted(columnName)).shouldBe(visible);
-    log.info("Column name is present %s".formatted(columnName));
+  public boolean filterByNameShouldBeVisible(final String filterName) {
+    return $x(FILTER_ITEM_LINE + FILTER_NAME_TEMPLATE.formatted(filterName)).has(visible);
+  }
+
+  public boolean mainGridContainsColumns(final String columnName) {
+    return $x(GRID_COLUMN_NAME_TEMPLATE.formatted(columnName)).has(visible);
   }
 
   public void openFirstFilter() {
     $x(FILTER_NAME).shouldBe(visible).click();
+  }
+
+  public void clickAddNewFilterButton() {
+    $x(ADD_FILTER_BUTTON).shouldBe(visible).click();
   }
 }
