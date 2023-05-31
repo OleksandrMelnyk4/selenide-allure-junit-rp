@@ -1,4 +1,4 @@
-package buisness.core;
+package buisness.core.pages;
 
 import lombok.extern.slf4j.Slf4j;
 

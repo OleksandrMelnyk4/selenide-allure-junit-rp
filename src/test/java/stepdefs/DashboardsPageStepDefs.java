@@ -1,7 +1,7 @@
 package stepdefs;
 
 
-import buisness.core.DashboardPage;
+import buisness.core.pages.DashboardPage;
 import io.cucumber.java.en.Then;
 import lombok.extern.slf4j.Slf4j;
 

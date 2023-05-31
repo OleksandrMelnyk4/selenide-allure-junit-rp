@@ -12,6 +12,9 @@ public enum PropertyNames {
   BROWSER_SIZE("configuration.browserSize"),
   HEADLESS("configuration.headless"),
   WEB_DRIVER_LOGS_ENABLED("configuration.webdriverLogsEnabled"),
+  AUTHORISATION_NAME("authorisation.user.name"),
+  AUTHORISATION_PASSWORD("authorisation.user.password"),
+  AUTHORISATION_URL("authorisation.url"),
   DEFAULT("default");
 
   private final String name;

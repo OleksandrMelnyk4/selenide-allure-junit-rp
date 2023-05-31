@@ -1,7 +1,7 @@
 package buisness.service;
 
-import buisness.core.DashboardPage;
-import buisness.core.LoginPage;
+import buisness.core.pages.DashboardPage;
+import buisness.core.pages.LoginPage;
 import com.codeborne.selenide.Selenide;
 import core.dto.LoginUserDto;
 import core.enums.UsersRole;
@@ -16,14 +16,14 @@ public class LoginService {
   private final LoginPage loginPage = new LoginPage();
   private final DashboardPage dashboardPage = new DashboardPage();
 
+  public static LoginUserDto getUser(String userRole) {
+    return new LoginUserDto(getProperty("usersParams.%s.login".formatted(userRole)), getProperty("usersParams.%s.password".formatted(userRole)));
+  }
+
   private void openLoginPage() {
     WebDriverManager.chromedriver().setup();
     open("/");
     Selenide.webdriver().driver().getWebDriver().manage().window().maximize();
-  }
-
-  private LoginUserDto getUser(String userRole) {
-    return new LoginUserDto(getProperty("usersParams.%s.login".formatted(userRole)), getProperty("usersParams.%s.password".formatted(userRole)));
   }
 
   public void loginWithUser(UsersRole userRole) {
