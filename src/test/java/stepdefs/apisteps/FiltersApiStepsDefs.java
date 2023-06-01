@@ -35,19 +35,19 @@ public class FiltersApiStepsDefs {
       .build();
   }
 
-  @When("User sends GET filters request")
-  public void userSendsGetFiltersRequest() {
-    filtersRestClient.getAllFilters();
+  @When("User sends GET filters request to {}")
+  public void userSendsGetFiltersRequest(final String path) {
+    filtersRestClient.getAllFilters(path);
   }
 
-  @When("User sends GET filter by ID request")
-  public void userSendsGetFilterByIdRequest() {
-    filtersRestClient.getFilterById();
+  @When("User sends GET filter by ID request to {}")
+  public void userSendsGetFilterByIdRequest(final String path) {
+    filtersRestClient.getFilterById(path);
   }
 
-  @When("User sends DELETE filters request")
-  public void userSendsDeleteFiltersRequest() {
-    filtersRestClient.deleteExistingFilter();
+  @When("User sends DELETE filters request to {}")
+  public void userSendsDeleteFiltersRequest(final String path) {
+    filtersRestClient.deleteExistingFilter(path);
   }
 
   @And("Verify response body contains filters")
@@ -57,10 +57,10 @@ public class FiltersApiStepsDefs {
     assertNotEquals(filtersResponse.getPage().getTotalElements(), 0);
   }
 
-  @When("User sends POST filter request")
-  public void userSendsPostFilterRequest() {
+  @When("User sends POST filter request to {}")
+  public void userSendsPostFilterRequest(final String path) {
     FilterDto newFilter = buildNewFilter();
-    filtersRestClient.createNewFilter(newFilter);
+    filtersRestClient.createNewFilter(path, newFilter);
   }
 
   @When("Save new filter ID")
@@ -69,27 +69,27 @@ public class FiltersApiStepsDefs {
     TestCache.putDataInCache(FILTER_ID, requireNonNull(response.extract().body().path("id")));
   }
 
-  @When("User sends POST filter request request with wrong body")
-  public void userSendsPostFilterRequestWithWrongBody() {
-    filtersRestClient.createNewFilter(FilterDto.builder()
+  @When("User sends POST filter request request with wrong body to {}")
+  public void userSendsPostFilterRequestWithWrongBody(final String path) {
+    filtersRestClient.createNewFilter(path, FilterDto.builder()
       .description("some description")
       .build());
   }
 
-  @When("User updates new {string} description for existing filter")
-  public void updateDescriptionForExistingFilter(final String description) {
+  @When("User updates new {string} description for existing filter to {}")
+  public void updateDescriptionForExistingFilter(final String description, final String path) {
     ValidatableResponse response = requireNonNull(TestCache.get(RESPONSE, ValidatableResponse.class));
     FilterDto filter = response.extract().as(FilterDto.class);
     filter.setDescription(description);
-    filtersRestClient.updateExistingFilter(filter);
+    filtersRestClient.updateExistingFilter(path, filter);
   }
 
-  @When("User updates existing filter with no conditions")
-  public void updateExistingFilterWithoutConditions() {
+  @When("User updates existing filter with no conditions to {}")
+  public void updateExistingFilterWithoutConditions(final String path) {
     ValidatableResponse response = requireNonNull(TestCache.get(RESPONSE, ValidatableResponse.class));
     FilterDto filter = response.extract().as(FilterDto.class);
     filter.setConditions(null);
-    filtersRestClient.updateExistingFilter(filter);
+    filtersRestClient.updateExistingFilter(path, filter);
   }
 
   @Then("Verify that filter has {string} description")

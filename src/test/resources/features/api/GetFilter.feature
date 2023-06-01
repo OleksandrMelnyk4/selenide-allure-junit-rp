@@ -5,11 +5,11 @@ Feature: Get filters
 
   Scenario: Admin user get all filters
     Given User with role ADMINISTRATOR and superadmin_personal project
-    When User sends GET filters request
+    When User sends GET filters request to api/v1/{projectId}/filter
     Then Verify response has 200 status code
     And Verify response body contains filters
 
   Scenario: Admin user should not get all filters for not existing project
     Given User with role ADMINISTRATOR and some_personal project
-    When User sends GET filters request
+    When User sends GET filters request to api/v1/{projectId}/filter
     Then Verify response has 403 status code
