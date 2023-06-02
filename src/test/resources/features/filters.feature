@@ -1,3 +1,4 @@
+@Ui
 Feature: Filters feature
   As an administrator
   I want to open Filters

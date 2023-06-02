@@ -1,6 +1,4 @@
-package buisness.core;
-
-import buisness.core.BasePage;
+package buisness.core.pages;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;

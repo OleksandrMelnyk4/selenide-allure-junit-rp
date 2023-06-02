@@ -2,16 +2,24 @@ package stepdefs;
 
 import com.codeborne.selenide.Selenide;
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
 
 import java.util.Base64;
 
+import static core.utils.TestCache.initializeTestCache;
+
 @Slf4j
 public class CucumberHook {
 
-  @After
+  @Before("@Api")
+  public void preSetUp() {
+    initializeTestCache();
+  }
+
+  @After("@Ui")
   public void afterScenario(Scenario scenario) {
     log.info("FINISH SCENARIO: " + scenario.getName());
     Selenide.clearBrowserCookies();
@@ -19,7 +27,7 @@ public class CucumberHook {
     Selenide.closeWebDriver();
   }
 
-  @After
+  @After("@Ui")
   public void takeScreenshot(Scenario scenario) {
     if (scenario.isFailed()) {
       String screenshotAsBase64 = Selenide.screenshot(OutputType.BASE64);

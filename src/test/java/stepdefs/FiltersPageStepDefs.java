@@ -1,8 +1,8 @@
 package stepdefs;
 
 import buisness.components.AddFilterComponent;
-import buisness.core.FiltersPage;
-import buisness.core.LauncherPage;
+import buisness.core.pages.FiltersPage;
+import buisness.core.pages.LauncherPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import lombok.extern.slf4j.Slf4j;

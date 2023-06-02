@@ -1,4 +1,4 @@
-package buisness.core;
+package buisness.core.pages;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
