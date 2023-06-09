@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum Timeout {
+  SEC_5(5),
   MILISEC_100(100),
   MILISEC_200(200),
   MILISEC_400(400),
