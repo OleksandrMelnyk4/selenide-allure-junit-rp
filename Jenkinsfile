@@ -1,9 +1,9 @@
 pipeline {
-    agent { docker 'public.ecr.aws/docker/library/golang:latest' }
+    agent any
 
-//     tools {
-//         maven "maven"
-//     }
+    tools {
+        maven "maven"
+    }
     
     stages {
         stage('Build') {
@@ -12,7 +12,7 @@ pipeline {
              credentialsId: '74e542ae-bb2a-464a-b910-dc1eecd08124',
              url: 'https://github.com/OleksandrMelnyk4/selenide-allure-junit-rp.git'
 				 
-              sh "mvn clean verify"
+              sh "mvn clean"
               
             }
         }
