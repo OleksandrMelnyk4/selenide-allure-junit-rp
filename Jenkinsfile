@@ -16,7 +16,7 @@ pipeline {
                 sh "mvn test -Dcucumber.filter.tags="@Api""
 
                 // To run Maven on a Windows agent, use
-                // bat "mvn test -Dcucumber.filter.tags="@Api""
+                // bat "mvn clean test"
             }
 
             post {
