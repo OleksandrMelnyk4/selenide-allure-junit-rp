@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'public.ecr.aws/docker/library/maven:3.9-sapmachine' }
-    }
+    agent { docker 'public.ecr.aws/docker/library/golang:latest' }
 
 //     tools {
 //         maven "maven"
