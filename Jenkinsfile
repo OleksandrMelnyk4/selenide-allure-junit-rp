@@ -17,4 +17,14 @@ pipeline {
             }
         }
     }
+  
+    post {
+        always {
+            script {
+                if (fileExists('target/allure-results')) {
+                    zip zipFile: 'allure-results.zip', archive: true, dir: 'target/allure-results'
+                }
+            }
+        }
+}
 }
