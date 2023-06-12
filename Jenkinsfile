@@ -13,7 +13,7 @@ pipeline {
                 git 'https://github.com/OleksandrMelnyk4/selenide-allure-junit-rp.git'
 
                 // Run Maven on a Unix agent.
-                sh "mvn test -Dcucumber.filter.tags="@Api""
+                sh "mvn clean test"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn clean test"
