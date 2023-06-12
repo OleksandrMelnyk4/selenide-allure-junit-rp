@@ -1,5 +1,7 @@
 pipeline {
-  agent {label 'docker'}
+   agent {
+        docker { image 'public.ecr.aws/docker/library/maven:3.9-sapmachine' }
+    }
 
     tools {
         maven "maven"
