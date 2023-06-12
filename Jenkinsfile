@@ -20,12 +20,7 @@ pipeline {
               sh "mvn clean verify"
             }
         }
-//         stage('Package') {
-//             steps {
-//               sh "mvn package -DskipTests"
-//             }
-//         }
-    }
+
   
     post {
         always {
