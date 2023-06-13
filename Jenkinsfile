@@ -4,9 +4,7 @@ pipeline {
     tools {
         maven "maven"
     }
-    
     stages {
-      
          stage('Source') {
             steps {
              git branch: 'main',
