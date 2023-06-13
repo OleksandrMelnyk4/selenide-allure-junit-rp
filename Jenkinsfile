@@ -7,11 +7,20 @@ pipeline {
 
     stages {
       stage('Scan') {
+        agent any
         steps {
-          withSonarQubeEnv(installationName: 'SonarQubeServers', envOnly: true)
+          withSonarQubeEnv('SonarQubeServers')
           bat "mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar"
         }
       }
+      
+     stage("Quality Gate") {
+       steps {
+          timeout(time: 2, unit: 'HOURS') {
+            waitForQualityGate abortPipeline: false
+              }
+            }
+          }
       
       stage('Run test') {
         steps {
