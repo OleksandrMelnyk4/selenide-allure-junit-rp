@@ -6,13 +6,14 @@ pipeline {
     }
 
     stages {
-      stage('Scan') {
-        agent any
-        steps {
-          withSonarQubeEnv(installationName:'SonarQubeServers')
-          bat "mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar"
-        }
+       stage("build & SonarQube analysis") {
+          node {
+              withSonarQubeEnv('SonarQubeServers') {
+                 bat "mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar"
+              }
+          }
       }
+      
       
 //      stage("Quality Gate") {
 //        steps {
