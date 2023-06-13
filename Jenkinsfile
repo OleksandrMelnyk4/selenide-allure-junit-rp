@@ -1,5 +1,5 @@
 pipeline {
-  agent { label 'linux'}
+  agent any
 
     tools {
       maven "maven"
@@ -10,7 +10,7 @@ pipeline {
         agent any
         steps {
           withSonarQubeEnv(installationName:'SonarQubeServers')
-          sh "mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar"
+          bat "mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar"
         }
       }
       
