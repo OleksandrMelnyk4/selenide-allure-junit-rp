@@ -42,4 +42,9 @@ pipeline {
         }
       }
     }
+      post{
+        always{
+            slackSend( channel: "#taf-interaction", token: "JenkinsCI", color: "good", message: "Build has finished")
+        }
+    }
   }
