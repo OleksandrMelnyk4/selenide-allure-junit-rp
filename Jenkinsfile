@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     tools {
         maven "maven"
     }
@@ -13,9 +12,9 @@ pipeline {
              poll: true
             }
         }
-        stage('Clean') {
+        stage('Test') {
             steps {
-              sh "mvn clean"
+              bat "mvn clean test"
             }
         }
 }
