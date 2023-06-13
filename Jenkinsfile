@@ -8,11 +8,7 @@ pipeline {
     stages {
       stage('Run test') {
         steps {
-           withSonarQubeEnv('SonarQubeScanner')
-          {
-            bat 'mvn clean sonar:sonar'
-            bat "mvn test -Dcucumber.filter.tags=@Api"
-          }
+          bat "mvn clean test -Dcucumber.filter.tags=@Api"
         }
       }
       stage('Reports') {
