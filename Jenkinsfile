@@ -12,12 +12,4 @@ pipeline {
           }
         }
     }
-	
- post {
-        always {
-            junit allowEmptyResults: true, testResults: 'target/allure-results/*.json'
-
-        
-        }
-    }
 }
