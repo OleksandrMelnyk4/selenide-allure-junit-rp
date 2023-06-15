@@ -3,6 +3,7 @@ pipeline {
     tools {
       maven "maven"
     }
+  stages {
       stage('Run tests') {
         steps {
           bat "mvn clean test -Dcucumber.filter.tags=@Api"
